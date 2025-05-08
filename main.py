@@ -5,7 +5,7 @@ def menu_inicial():
     print("¿Que desea realizar?")
     print("1. Iniciar sesion")
     print("2. Registrarce")
-    print("3. Cerrar sesion")
+    print("3. Salir")
     print("")
     try:
         opcion = int(input("Ingrese la accion que quiere realizar (1, 2, 3): "))
@@ -23,7 +23,7 @@ def menu_inicial():
     elif opcion == 2:
         registro()
     else:
-        print("Sesion cerrada")
+        print("Sesion terminada")
 
 def registro():
     usuario = input("Ingrese su nombre de usuario: ")
@@ -40,7 +40,7 @@ def registro():
 
 def inicio_sesion():
     print("Inicio de sesion")
-    if us_y_contra == False:
+    if not us_y_contra:
         print("No hay usuarios registrados")
         menu_inicial()
     usuario = input("Ingrese su usuario: ")
@@ -48,12 +48,11 @@ def inicio_sesion():
     if usuario not in us_y_contra:
         print("Usuario no resgistrado")
         menu_inicial()
-    if contra != us_y_contra[usuario]:
+    elif contra != us_y_contra[usuario]:
         print("El la contraseña no es correcta")
         inicio_sesion()
     else:
         menu_usuario()
-registro()
 
 
 def menu_usuario():
@@ -75,9 +74,9 @@ def menu_usuario():
         print("Ingrese un valor numerico")
         menu_inicial()
     if opcion == 1:
-        inicio_sesion()
+        pass
     elif opcion == 2:
-        registro()
+        pass
     elif opcion == 3:
         pass
     elif opcion == 4:       #Cambiar el rango,este puede variar
@@ -86,3 +85,6 @@ def menu_usuario():
         pass
     else:
         print("Sesion cerrada")
+        menu_inicial()
+
+menu_inicial()
